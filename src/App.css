@@ -1,0 +1,10 @@
+/* *{box-siing: border-box;} */
+.app{
+    align-items: center;
+    background-color: #f3f2ef;
+    flex-direction: column;
+}
+
+.app__body{
+    display: flex;
+}
