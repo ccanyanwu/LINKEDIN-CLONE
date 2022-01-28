@@ -1,5 +1,5 @@
 import React from "react";
-
+import FlipMove from "react-flip-move";
 import CreateIcon from "@material-ui/icons/Create";
 import "./Feed.css";
 import InputOption from "./InputOption";
@@ -65,17 +65,17 @@ const Feed = () => {
           />
         </div>
       </div>
-
-      {/* Posts */}
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-        <Post
-          key={id}
-          name={name}
-          description={description}
-          message={message}
-          photoUrl={photoUrl}
-        />
-      ))}
+      <FlipMove>
+        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+          <Post
+            key={id}
+            name={name}
+            description={description}
+            message={message}
+            photoUrl={photoUrl}
+          />
+        ))}
+      </FlipMove>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import SideBar from "./components/appBody/sidebar/Sidebar";
 import Feed from "./components/appBody/feed/Feed";
 import Login from "./components/appBody/login/Login";
+import Widgets from "./components/appBody/widgets/Widgets";
 
 function App() {
   const user = useSelector(selectUser);
@@ -27,7 +28,7 @@ function App() {
           })
         );
       } else {
-        dispatch(logOut())
+        dispatch(logOut());
       }
     });
   }, []);
@@ -41,10 +42,8 @@ function App() {
       ) : (
         <div className="app__body">
           <SideBar />
-
           <Feed />
-
-          {/* widgets */}
+          <Widgets />
         </div>
       )}
     </div>

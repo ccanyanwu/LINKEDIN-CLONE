@@ -1,5 +1,4 @@
 /* *{box-siing: border-box;} */
-body{overflow-x: hidden;}
 .app {
   align-items: center;
   background-color: #f3f2ef;
@@ -8,6 +7,12 @@ body{overflow-x: hidden;}
 
 .app__body {
   display: flex;
-	margin: 35px 20px 0;
-	max-width: 1200px;
+  margin: 35px 20px 0;
+  max-width: 1200px;
+}
+
+@media (min-width: 998px) {
+  body {
+    overflow-x: hidden;
+  }
 }
