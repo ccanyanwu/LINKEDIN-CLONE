@@ -1,5 +1,6 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../features/userSlice";
 import { Avatar } from "@material-ui/core";
 import "./Sidebar.css";
 
@@ -14,16 +15,16 @@ const recentItem = (topic) => {
 };
 
 const SideBar = () => {
+  const user = useSelector(selectUser);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="" />
-        <Avatar
-          className="sidebar__avatar"
-          src="https://randomuser.me/api/portraits/women/31.jpg"
-        />
-        <h2>Thrive Collins</h2>
-        <h4>anyanwuccollins@gmail.com</h4>
+        <img src={user.photoUrl ? user.photoUrl : user.displayName[0]} alt="" />
+        <Avatar className="sidebar__avatar" src={user.photoUrl}>
+          {user.email[0]}
+        </Avatar>
+        <h2>{user.displayName}</h2>
+        <h4>{user.email}</h4>
       </div>
       <div className="sidebar__stats">
         <div className="sidebar__stat">

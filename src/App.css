@@ -1,10 +1,13 @@
 /* *{box-siing: border-box;} */
-.app{
-    align-items: center;
-    background-color: #f3f2ef;
-    flex-direction: column;
+body{overflow-x: hidden;}
+.app {
+  align-items: center;
+  background-color: #f3f2ef;
+  flex-direction: column;
 }
 
-.app__body{
-    display: flex;
+.app__body {
+  display: flex;
+	margin: 35px 20px 0;
+	max-width: 1200px;
 }

@@ -20,7 +20,7 @@ const Login = () => {
         email,
         password
       );
-      createUser.user.updateProfile({
+      await createUser.user.updateProfile({
         displayName: name,
         photoURL: profilePicture,
       });
@@ -33,12 +33,30 @@ const Login = () => {
         })
       );
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
-  const loginUser = (e) => {
+  const loginUser = async(e) => {
     e.preventDefault();
+
+    try {
+      const userSignedIn = await auth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+      dispatch(
+        logIn({
+          email: userSignedIn.user.email,
+          uid: userSignedIn.user.uid,
+          displayName: userSignedIn.user.displayName,
+          profileUrl: userSignedIn.user.profilePicture,
+        })
+      );
+    } catch (error) {
+      alert(error)
+    }
+    
   };
 
   return (

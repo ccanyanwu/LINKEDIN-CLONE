@@ -7,32 +7,36 @@ import ImageIcon from "@material-ui/icons/Image";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../features/userSlice";
 import Post from "./Post";
 import { useState, useEffect } from "react";
 import { db } from "../../../firebase";
 import firebase from "firebase";
 
 const Feed = () => {
+  const user= useSelector(selectUser)
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
-  //console.log(db);
   useEffect(() => {
-    db.collection("posts").orderBy('timestamp', 'desc').onSnapshot((snapshot) =>
-      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-    );
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+      );
   }, []);
 
   //send post function
   const sendPost = (e) => {
     e.preventDefault();
     db.collection("posts").add({
-      name: "Thrive Collins",
-      description: "This is a text",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl: user.photoUrl || '',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
-    setInput('');
+    setInput("");
   };
   return (
     <div className="feed">
