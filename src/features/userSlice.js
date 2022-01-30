@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { composeWithDevTools } from 'redux-devtools-extension';
-
-// const store = createStore(rootReducer, composeWithDevTools());
 
 export const userSlice = createSlice({
   name: "user",
